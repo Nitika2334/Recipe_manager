@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Recipe Book</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Recipe Book</h1>
+        <div class="recipe-form">
+            <h2>Add a Recipe</h2>
+            <form id="recipe-form">
+                <input type="text" id="recipe-name" placeholder="Recipe Name" required>
+                <textarea id="recipe-description" placeholder="Recipe Description" required></textarea>
+                <button type="submit">Add Recipe</button>
+            </form>
+        </div>
+        <div class="recipe-list">
+            <h2>Recipes</h2>
+            <input type="text" id="search-input" placeholder="Search Recipes">
+            <ul id="recipe-list"></ul>
+        </div>
+    </div>
+
+    <!-- Add buttons for search and edit -->
+    <div class="buttons">
+        <button id="search-button">Search</button>
+        <!-- <button id="edit-button">Edit Recipe</button> -->
+    </div>
+
+    <!-- Add a modal for editing recipes -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+            <h2>Edit Recipe</h2>
+            <form id="edit-form">
+                <input type="text" id="edit-name" placeholder="Recipe Name" required>
+                <textarea id="edit-description" placeholder="Recipe Description" required></textarea>
+                <input type="hidden" id="edit-recipe-index">
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
