@@ -27,16 +27,29 @@ document.addEventListener('DOMContentLoaded', () => {
         recipeList.innerHTML = '';
         recipes.forEach((recipe, index) => {
             const li = document.createElement('li');
-            li.innerHTML = `<strong>${recipe.name}</strong>: ${recipe.description}
-                <button id="edit${index}">Edit</button>
+            const heading = document.createElement('h3'); // Use an h3 element for the recipe name
+            heading.textContent = recipe.name;
+            li.appendChild(heading);
+
+            // Split the recipe description into lines
+            const recipeDescriptionLines = recipe.description.split('\n');
+            const descriptionList = document.createElement('ul');
+
+            // Create bullet points for each line in the description
+            recipeDescriptionLines.forEach(line => {
+                const descriptionItem = document.createElement('li');
+                descriptionItem.textContent = line;
+                descriptionList.appendChild(descriptionItem);
+            });
+
+            li.appendChild(descriptionList);
+            li.innerHTML += `<button onclick="editRecipe(${index})">Edit</button>
                 <button onclick="deleteRecipe(${index})">Delete</button>`;
             recipeList.appendChild(li);
-            document.getElementById("edit" +
-                index).addEventListener("click", () => {
-                editRecipe(index)
-            });
         });
     }
+
+
 
     function closeModal() {
         editModal.style.display = 'none';
