@@ -14,13 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let recipes = JSON.parse(localStorage.getItem('recipes')) || [];
     closeModalDiv.addEventListener("click", closeModal);
 
-    function editRecipe(index) {
-        const recipeToEdit = recipes[index];
-        editName.value = recipeToEdit.name;
-        editDescription.value = recipeToEdit.description;
-        editRecipeIndex.value = index;
-        editModal.style.display = 'block';
-    }
+
 
 
     function updateRecipeList(recipes) {
@@ -102,16 +96,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    window.editRecipe = (index) => {
+        const recipeToEdit = recipes[index];
+        editName.value = recipeToEdit.name;
+        editDescription.value = recipeToEdit.description;
+        editRecipeIndex.value = index;
+        editModal.style.display = 'block';
+    }
+
     searchInput.addEventListener('input', () => {
         const query = searchInput.value.trim();
         searchRecipes(query);
     });
 
     // Adding event listeners for the "Edit" and "Search" buttons
-    editButton.addEventListener('click', () => {
-        const index = editRecipeIndex.value;
-        editRecipe(index);
-    });
+    // editButton.addEventListener('click', () => {
+    //     const index = editRecipeIndex.value;
+    //     editRecipe(index);
+    // });
 
     searchButton.addEventListener('click', () => {
         const query = searchInput.value.trim();
